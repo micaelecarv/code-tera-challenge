@@ -15,7 +15,7 @@
 
 ## 💻 Projeto
 
-A livraria Cowboy é um projeto desenvolvido para a **[vaga de Front-End Júnior na Somos Tera]**.
+A livraria Cowboy é um projeto desenvolvido para a **vaga de Front-End Júnior na Somos Tera**.
 
 ## 🔖 Layout
 
@@ -39,11 +39,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 🚀 Como executar
 
 Clone o projeto e acesse a pasta do mesmo.
-
-# Clone este repositório
+```bash
 $ git clone https://github.com/micaelecarv/code-tera-challenge.git
-# Acesse no terminal a pasta do projeto:
 $ cd code-tera-challenge 
+```
 
 Para iniciá-lo, siga os passos abaixo:
 ```bash
