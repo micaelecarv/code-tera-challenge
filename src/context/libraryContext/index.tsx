@@ -11,18 +11,8 @@ type Book = {
   users_who_liked: [];
 }
 
-type Theme = {
-  header: string;
-  background: string;
-  input: string;
-  text: string;
-  text_secondary: string;
-  text_terciary: string;
-  icon: string;
-}
-
 type PropsLibraryContext = {
-  state: { library: Book[], theme: Theme },
+  state: { library: Book[] },
   setState: React.Dispatch<React.SetStateAction<{library: Book[]}>>
 }
 
@@ -42,10 +32,9 @@ const LibraryContextProvider: React.FC = ({ children }) => {
   useEffect(() => {
     const data = api.get('https://us-central1-tera-platform.cloudfunctions.net/url-tera-code-challenge')
     data.then(dataRequest => {
-          console.log(dataRequest.data)
-          // @ts-ignore: Unreachable code error
-          setState({...state, library: [...dataRequest.data]});
-        })
+      // @ts-ignore: Unreachable code error
+      setState({...state, library: [...dataRequest.data]});
+    })
   }, []);
 
   return (

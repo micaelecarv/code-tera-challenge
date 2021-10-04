@@ -1,13 +1,11 @@
-import { useState } from "react";
-import { FilterInput } from "./style";
+import { FilterByCategory, FilterInput } from "./style";
 
 export function FilterBooks(props: any) {
-  const [books, setBooks] = useState([]);
 
   return (
     <>
       {props.showCategory && (
-        <input type="text" placeholder="Nome da categoria" onChange={props.handleChangeInput} />
+        <FilterByCategory type="text" placeholder="Nome da categoria" onChange={props.handleChangeInput} />
       )}
         <FilterInput name="filter" onChange={props.handleChangeSelect}>
           <option value="" disabled selected hidden>Filtros</option>

@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
 
-export const GlobalStyle = createGlobalStyle`
+export default createGlobalStyle`
   :root {
-    --background: #F1FFFF;
+    --background: ${(props: any) => props.theme.colors.background};
 
   }
   
@@ -11,7 +11,6 @@ export const GlobalStyle = createGlobalStyle`
    padding: 0;
    box-sizing: border-box; 
   }
-
 
   //font-size: 16px;
 

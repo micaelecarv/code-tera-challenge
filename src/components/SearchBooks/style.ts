@@ -24,4 +24,14 @@ export const SearchBooksStyled = styled.div`
     padding-top: 14px;
     padding-bottom: 14px;
   }
+
+  @media (max-width: 768px) {
+    width: 45%;
+
+    input {
+      width: 100%;
+      padding-left: 8px;
+      padding-right: 0px;
+    }
+  }
 `;

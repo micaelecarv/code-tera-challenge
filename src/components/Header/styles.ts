@@ -3,12 +3,13 @@ import styled from 'styled-components'
 export const Container = styled.header`
   margin: 0px 0px 40px;
   
-  background: #95D9DA; 
+  background: ${(props: any) => props.theme.colors.header};
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0px 100px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
   
   @media(max-width: 720px) {
     padding: 1rem 1.5rem;
@@ -22,7 +23,7 @@ export const Container = styled.header`
     font-weight: normal;
     font-size: 2rem;
     line-height: 59px;
-    color: #FCF7F8;
+    color: ${(props: any) => props.theme.colors.text};
   }
 `;
 

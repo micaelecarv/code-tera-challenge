@@ -1,10 +1,7 @@
-import Left from '../../assets/left';
-import Right from '../../assets/right';
-import { PaginationBeforeAfterStyled, PaginationStyled, PaginationNumber } from './style';
+import { LIMIT } from '../../constants';
+import { PaginationBeforeAfterStyled, PaginationStyled, PaginationNumber, RightArrow, LeftArrow } from './style';
 
 export function Pagination(props: any) {
-
-  const LIMIT = 8;
 
   const clickOnPagination = (index:any) => () => {
     props.setPagination({
@@ -17,26 +14,25 @@ export function Pagination(props: any) {
     <PaginationStyled>
       <PaginationBeforeAfterStyled>
         {props.pagination.offset > 0 && (
-          <h2 onClick={clickOnPagination( Math.abs(props.pagination.offset - LIMIT))}> <Left /> </h2>
+          <h2 onClick={clickOnPagination( Math.abs(props.pagination.offset - LIMIT))}> <LeftArrow /> </h2>
         )}
       </PaginationBeforeAfterStyled>
       <PaginationNumber>
         {Array.from({length: Math.floor(props.libraryLength / LIMIT + 1)}).map((item, index) => {
-          console.log("INDEX", index)
           return (
-            <h3 onClick={clickOnPagination((props.pagination.limit * (index + 1)) - LIMIT)}>
+            <>
               {index < Math.floor(props.libraryLength / LIMIT) && (
-                <>
+                <p style={{fontWeight: `${props.pagination.offset / LIMIT === index ? 'bold' : 'normal'}`}} onClick={clickOnPagination((props.pagination.limit * (index + 1)) - LIMIT)}>
                   {index + 1}
-                </>
+                </p>
               )}
-            </h3>
+            </>
           )
         })}
       </PaginationNumber>
       <PaginationBeforeAfterStyled>
         {props.pagination.offset + LIMIT < props.libraryLength && (
-          <h2 onClick={clickOnPagination(Math.abs(props.pagination.offset + LIMIT))}> <Right /> </h2>
+          <h2 onClick={clickOnPagination(Math.abs(props.pagination.offset + LIMIT))}> <RightArrow /> </h2>
         )}
       </PaginationBeforeAfterStyled>
     </PaginationStyled>

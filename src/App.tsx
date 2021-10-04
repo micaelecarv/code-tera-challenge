@@ -1,29 +1,32 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
+
 import light from './styles/themes/ligth';
+import dark from './styles/themes/dark';
 
-import { ListBooks } from './components/ListBooks';
+import GlobalStyle from './styles/global';
+import Header from './components/Header';
 
-import {GlobalStyle} from './styles/global';
 import { Home } from './pages/Home';
 import { Detail } from './pages/Detail';
-import { Header } from './components/Header';
-import GlobalContext from './context/libraryContext';
 import { LibraryContextProvider } from './context/libraryContext';
-
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
 const App = () => {
+  const [theme, setTheme] = useState(light)
+
+  const toggleTheme = () => {
+    setTheme(theme.title === 'light' ? dark : light);
+  }
   return ( 
-    <ThemeProvider theme={light}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Header />
+      <Header toggleTheme={toggleTheme} />
 
       <LibraryContextProvider>
         <Router>

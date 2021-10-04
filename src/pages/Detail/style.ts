@@ -10,7 +10,9 @@ export const DetailStyled = styled.div`
   position: relative;
   top: 32px;
   margin: 0 auto;
-  background: #f1ffff;
+  background: ${(props: any) => props.theme.colors.background};
+  color: ${(props: any) => props.theme.colors.text};
+
 `;
 
 export const HearthIcon = styled.div`
@@ -19,14 +21,30 @@ export const HearthIcon = styled.div`
   padding-right: 24px;
 `
 
-export const DetailContentStyled = styled.div`
+export const DetailSectionStyled = styled.div`
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const DetailHearthIconStyled = styled.div`
   margin-left: 4px;
   margin-top: 4px;
+
+  @media (max-width: 768px) {
+    margin-top: -54px;
+    z-index: 9;
+    margin-right: 25px;
+  }
 `;
+
+export const DetailContentStock = styled.div`
+  position: absolute;
+  right: 0;
+  margin-right: 22px;
+  margin-top: -30px;
+`
 
 export const DetailImageBookStyled = styled.div`
   display: flex;
@@ -38,6 +56,11 @@ export const DetailImageBookStyled = styled.div`
   img {
     width: 319px;
     height: 418px;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 0px;
+    margin-top: 100px;
   }
 `;
   
@@ -71,4 +94,28 @@ export const DetailReturnHomeStyled = styled(Link)`
   font-size: 20px;
   text-decoration: none;
   color: gray;
+
+  @media (max-width: 768px) {
+    left: -37%;
+  }
 `;
+
+export const DetailContent = styled.div`
+  @media (max-width: 768px) {
+    margin: 18px;
+  }
+`
+
+export const DetailContentTitle = styled.div`
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 0px;
+    margin: 12px;
+  }
+`
+
+export const DetailContentDescription = styled.div`
+  @media (max-width: 768px) {
+    margin-top: 24px;
+  }
+`

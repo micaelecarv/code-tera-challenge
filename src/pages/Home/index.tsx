@@ -3,12 +3,11 @@ import { ListBooks } from "../../components/ListBooks"
 import { SearchBooks } from "../../components/SearchBooks";
 import { FilterBooks } from "../../components/FilterBooks";
 import { Pagination } from "../../components/Pagination";
-import {USER_NAME} from '../../constants'
+import {LIMIT, USER_NAME} from '../../constants'
 
 import { TotalBooks } from "../../styles/totalBooks";
 import { SearchBooksStyled } from "../../components/SearchBooks/style"
 import { FilterBooksStyled } from "../../components/FilterBooks/style"
-import { PaginationStyled } from "../../components/Pagination/style"
 import { HomeStyled, HomeContainerStyled, HomeListBooksContainerStyled } from "./style";
 import LibraryContext from '../../context/libraryContext'
 
@@ -23,8 +22,6 @@ interface Library {
   users_who_liked: [];
 }
 
-const LIMIT = 8
-
 export function Home() {
   const { state } = useContext(LibraryContext)
 
@@ -38,7 +35,6 @@ export function Home() {
 
   const filterLibraryBySearch =  (isCategorySearch: boolean = false) => (keyboardPress: any) => {
     const value = keyboardPress.target.value
-    console.log(value)
     const filteredLibrary = state.library?.filter(book => {
       if (isCategorySearch) {
         return book.category.indexOf(value) >= 0
@@ -92,6 +88,7 @@ export function Home() {
             // @ts-ignore: Unreachable code error
             return book.users_who_liked.includes(USER_NAME)
           }
+        
         })
         break;
       case 'by-categories':
@@ -117,9 +114,7 @@ export function Home() {
         </SearchBooksStyled>
 
         <FilterBooksStyled>
-          <span>
             <FilterBooks handleChangeSelect={filterLibraryByFilter} handleChangeInput={filterLibraryBySearch(true)} showCategory={showCategoryInput} />
-          </span>
         </FilterBooksStyled>
       </HomeContainerStyled>
 
@@ -129,7 +124,6 @@ export function Home() {
 
       <HomeListBooksContainerStyled>
           <ListBooks bookLibrary={filteredBooks.slice(pagination.offset, pagination.offset + pagination.limit)} />
-          {/*<ListBooks bookLibrary={filteredBooks.length > 0 ? filteredBooks.slice(pagination.offset, pagination.offset + pagination.limit) : state.library.slice(pagination.offset, pagination.offset + pagination.limit)} />*/}
       </HomeListBooksContainerStyled>
 
       <Pagination libraryLength={state.library.length} setPagination={setPagination} pagination={pagination}/>

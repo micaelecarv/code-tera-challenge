@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ButtonLike from '../../assets/button-like';
 
 export const BookStyled = styled.div`
   flex-grow: 1;
@@ -24,6 +25,10 @@ export const BookHearthIconStyled = styled.div`
   margin-left: 4px;
   margin-top: 4px;
 `;
+
+export const IconHeartUnliked = styled(ButtonLike)`
+  stroke: ${(props: any) => props.theme.colors.text}
+`
 
 export const BookLiStyled = styled.div`
   display: flex;

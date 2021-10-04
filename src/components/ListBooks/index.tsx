@@ -20,7 +20,6 @@ interface Library {
 }
 
 export function ListBooks(props: Library) {
-  console.log("LIST BOOKS", props.bookLibrary)
   return (
     <section>
       <ListBooksStyled>

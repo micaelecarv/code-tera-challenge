@@ -1,5 +1,5 @@
 export default {
-  title: 'ligth',
+  title: 'light',
 
   colors: {
     header: '#95d9da', 

@@ -13,4 +13,10 @@ export const TotalBooks = styled.p`
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
+  color: ${(props: any) => props.theme.colors.text};
+
+  @media (max-width: 768px) {
+    margin: 12px;
+    margin-top: 24px
+  }
 `;

@@ -14,7 +14,7 @@ export const ListBooksStyled = styled.div`
   }
 
   li {
-    background: #f1ffff;
+    background: ${(props: any) => props.theme.colors.background};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +32,7 @@ export const ListBooksStyled = styled.div`
     font-style: normal;
     font-weight: 400;
     font-size: 0.9rem;
-    color: #000000;
+    color: ${(props: any) => props.theme.colors.text};
   }
 
   strong {
@@ -44,6 +44,6 @@ export const ListBooksStyled = styled.div`
     font-weight: 400;
     font-size: 1.1rem;
     line-height: 1.75rem;
-    color: #000000;
+    color: ${(props: any) => props.theme.colors.text};
   }
 `;

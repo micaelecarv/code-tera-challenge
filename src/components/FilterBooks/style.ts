@@ -15,6 +15,12 @@ export const FilterBooksStyled = styled.div`
     padding-bottom: 14px;
     margin-right: 12px;
   }
+
+  @media (max-width: 768px) {
+    width: 45%;
+    display: flex;
+    flex-direction: column
+  }
 `;
 
 export const FilterInput = styled.select`
@@ -32,4 +38,27 @@ export const FilterInput = styled.select`
   font-size: 18px;
   line-height: 21px;
   padding-left: 10px;
+
+  @media (max-width: 768px) {
+    width: 100%
+  }
 `;
+
+export const FilterByCategory = styled.input`
+  width: 285px;
+  height: 20px;
+  font-family: 'Rubik', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  padding-left: 27px;
+  padding-right: 90px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  margin-right: 12px;
+
+  @media (max-width: 768px) {
+    order: 1
+  }
+`

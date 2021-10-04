@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ButtonLike from '../../assets/button-like';
 import Liked from '../../assets/liked';
 import {USER_NAME} from '../../constants';
-import { BookStyled, BookLiStyled, BookLiTextStyled, BookHearthIconStyled } from './style';
+import { BookStyled, BookLiStyled, BookLiTextStyled, BookHearthIconStyled, IconHeartUnliked } from './style';
 
 const fallbackImage = 'https://www.mswordcoverpages.com/wp-content/uploads/2018/10/Book-cover-page-3-CRC.png'
 
@@ -24,7 +23,7 @@ export function Book(props: BookItemProps) {
 
   useEffect(() => {
     if (Array.isArray(props.bookItem.users_who_liked)) {
-                  // @ts-ignore: Unreachable code error
+      // @ts-ignore: Unreachable code error
       const isLiked = props.bookItem.users_who_liked.includes(USER_NAME)
       if (isLiked) {
         setLiked(true)
@@ -53,7 +52,7 @@ export function Book(props: BookItemProps) {
       {/* <div className="book"> */}
       <BookStyled>
           <li>
-            <img src={props.bookItem.name === "Chobits" ? fallbackImage : props.bookItem.cover_picture} style={{height: '250px'}}/>
+            <img alt={props.bookItem.name} src={props.bookItem.name === "Chobits" ? fallbackImage : props.bookItem.cover_picture} style={{height: '250px'}}/>
             {/* <div className="book-li"> */}
             <BookLiStyled>
               <Link to={{pathname: '/detail', state: props.bookItem }}>
@@ -70,7 +69,7 @@ export function Book(props: BookItemProps) {
                   {liked ? (
                     <Liked onClick={clickLikeButton()}/>
                     ) : (
-                    <ButtonLike onClick={clickLikeButton()}/>
+                    <IconHeartUnliked onClick={clickLikeButton()}/>
                   )}
                 </BookHearthIconStyled>
             </BookLiStyled>

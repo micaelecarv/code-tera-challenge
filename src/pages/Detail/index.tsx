@@ -1,21 +1,24 @@
-// import { Book } from "../components/Book";
-import { Link } from "react-router-dom";
+
 import Left from '../../assets/left';
 import {USER_NAME} from '../../constants'
 import { useState, useEffect, useContext } from 'react';
-import ButtonLike from '../../assets/button-like';
 import Liked from '../../assets/liked';
 import LibraryContext from '../../context/libraryContext'
 
 import { 
   DetailStyled,
-  DetailContentStyled,
+  DetailSectionStyled,
   DetailHearthIconStyled,
   DetailImageBookStyled,
   DetailSoldOutStyled,
   DetailReturnHomeStyled,
-  HearthIcon
+  HearthIcon,
+  DetailContent,
+  DetailContentTitle,
+  DetailContentStock,
+  DetailContentDescription
 } from "./style";
+import { IconHeartUnliked } from "../../components/Book/style";
 
 interface BookDetailProps {
   name: string;
@@ -82,13 +85,13 @@ export function Detail(props: any) {
           <Left />Voltar
         </DetailReturnHomeStyled>
 
-        <DetailContentStyled>
-          <div>
-            <div>
+        <DetailSectionStyled>
+          <DetailContent>
+            <DetailContentTitle>
               <h1>
                 {bookDetail.name}
               </h1>
-            </div>
+            </DetailContentTitle>
 
             <HearthIcon>
               <h3>
@@ -99,32 +102,31 @@ export function Detail(props: any) {
                 {liked ? (
                   <Liked onClick={clickLikeButton()}/>
                   ) : (
-                  <ButtonLike onClick={clickLikeButton()}/>
+                  <IconHeartUnliked onClick={clickLikeButton()}/>
                 )}
               </DetailHearthIconStyled>
             </HearthIcon>
+            <h3>{bookDetail.category}</h3>
 
-            <div>  
-              <h3>{bookDetail.category}</h3>
+            <DetailContentStock>  
               <h3>
                 {bookDetail.stock > 0 ? `Em Estoque: ${bookDetail.stock} unidades` : `Fora de Estoque`}
               </h3>
-            </div>
+            </DetailContentStock>
 
-            <div>
+            <DetailContentDescription>
               <span>{bookDetail.description}</span>
-            </div>
-          </div>
+            </DetailContentDescription>
+          </DetailContent>
           <DetailImageBookStyled>
-              <img src={bookDetail.cover_picture} />
+              <img alt={bookDetail.name} src={bookDetail.cover_picture} />
               {bookDetail.stock === 0 && (
                 <DetailSoldOutStyled>
                   <p>FORA DE ESTOQUE</p>
                 </DetailSoldOutStyled>
               )}
           </DetailImageBookStyled>
-          
-        </DetailContentStyled>
+        </DetailSectionStyled>
       </DetailStyled>
     </>
   );
