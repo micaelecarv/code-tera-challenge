@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.header`
   margin: 0px 0px 40px;
@@ -23,7 +23,7 @@ export const Container = styled.header`
     font-weight: normal;
     font-size: 2rem;
     line-height: 59px;
-    color: ${(props: any) => props.theme.colors.text};
+    color: ${(props: any) => props.theme.colors.text_secondary};
   }
 `;
 

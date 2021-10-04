@@ -10,7 +10,7 @@ import { ListBooksStyled } from './style';
 interface Library {
   bookLibrary: {
     name: string;
-    author: string;
+     author: string;
     description: string;
     cover_picture: string;
     category: string;
