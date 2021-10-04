@@ -29,7 +29,7 @@ export function Book(props: BookItemProps) {
         setLiked(true)
       }
     }
-  }, []);
+  }, [props.bookItem.users_who_liked]);
 
   const clickLikeButton = () => () => {
     if (Array.isArray(props.bookItem.users_who_liked)) {

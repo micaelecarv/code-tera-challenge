@@ -44,7 +44,7 @@ export function Detail(props: any) {
         setLiked(true)
       }
     } 
-  }, []);
+  }, [props.location.state.users_who_liked]);
 
   const updateState = (usersWhoLiked: []) => {
     const updatedState = state.library.map(book => {

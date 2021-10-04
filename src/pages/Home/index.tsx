@@ -34,12 +34,12 @@ export function Home() {
   }, [state]);
 
   const filterLibraryBySearch =  (isCategorySearch: boolean = false) => (keyboardPress: any) => {
-    const value = keyboardPress.target.value
+    const value =  keyboardPress.target.value.toLowerCase()
     const filteredLibrary = state.library?.filter(book => {
       if (isCategorySearch) {
         return book.category.indexOf(value) >= 0
       }
-      return book.name.indexOf(value) >= 0
+      return book.name.toLowerCase().indexOf(value) >= 0
     })
     setFilteredBooks(filteredLibrary)
   }
@@ -83,6 +83,7 @@ export function Home() {
         })]
         break;
       case 'tanned-books':
+        // eslint-disable-next-line array-callback-return
         filteredLibrary = state.library.filter(book => {
           if (Array.isArray(book.users_who_liked)) {
             // @ts-ignore: Unreachable code error
