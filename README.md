@@ -42,9 +42,10 @@ Clone o projeto e acesse a pasta do mesmo.
 
 # Clone este repositório
 $ git clone https://github.com/micaelecarv/code-tera-challenge.git
-# Acesse no terminal a pasta do projeto seguindo os passos abaixo:
+# Acesse no terminal a pasta do projeto:
 $ cd code-tera-challenge 
 
+Para iniciá-lo, siga os passos abaixo:
 ```bash
 # Instalar as dependências
 $ yarn
