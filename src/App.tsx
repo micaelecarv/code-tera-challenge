@@ -15,6 +15,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
 
 const App = () => {
@@ -33,6 +34,9 @@ const App = () => {
           <Switch>
             <Route component={Detail} path="/detail"/>
             <Route component={Home} path="/home"/>  
+            <Route exact path="/">
+              <Redirect to="/home" />
+            </Route>
           </Switch>
         </Router>
       </LibraryContextProvider>
