@@ -1,0 +1,26 @@
+.pagination {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.pagination-darkmode {
+  color: white;
+}
+
+.pagination li {
+  margin: 12px;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.pagination .active {
+  font-weight: bold;
+}
+
+.pagination .previous,
+.next {
+  font-size: 22px;
+}

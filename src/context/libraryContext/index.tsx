@@ -35,7 +35,7 @@ const LibraryContextProvider: React.FC = ({ children }) => {
       // @ts-ignore: Unreachable code error
       setState({...state, library: [...dataRequest.data]});
     })
-  }, [state]);
+  }, []);
 
   return (
     // @ts-ignore: Unreachable code error

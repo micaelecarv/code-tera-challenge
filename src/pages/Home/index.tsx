@@ -1,16 +1,17 @@
 import { useState, useEffect, useContext } from "react";
-import { ListBooks } from "../../components/ListBooks"
+import { ListBooks } from "../../components/ListBooks";
 import { SearchBooks } from "../../components/SearchBooks";
 import { FilterBooks } from "../../components/FilterBooks";
-import { Pagination } from "../../components/Pagination";
-import {LIMIT, USER_NAME} from '../../constants'
+import {LIMIT, USER_NAME} from '../../constants';
+import ReactPaginate from 'react-paginate';
 
 import { TotalBooks } from "../../styles/totalBooks";
-import { SearchBooksStyled } from "../../components/SearchBooks/style"
-import { FilterBooksStyled } from "../../components/FilterBooks/style"
+import { SearchBooksStyled } from "../../components/SearchBooks/style";
+import { FilterBooksStyled } from "../../components/FilterBooks/style";
 import { HomeStyled, HomeContainerStyled, HomeListBooksContainerStyled } from "./style";
-import LibraryContext from '../../context/libraryContext'
-
+import LibraryContext from '../../context/libraryContext';
+import './style.css'
+import { useTheme } from "styled-components";
 
 interface Library {
   name: string;
@@ -24,10 +25,12 @@ interface Library {
 
 export function Home() {
   const { state } = useContext(LibraryContext)
+  const theme = useTheme()
 
   const [filteredBooks, setFilteredBooks] = useState<Library[]>(state.library);
   const [showCategoryInput, setShowCategoryInput] = useState(false);
-  const [pagination, setPagination] = useState({offset: 0, limit: LIMIT});
+  const [offsetPagination, setOffsetPagination] = useState(0)
+  const [selectedPage, setSelectedPage] = useState(1)
 
   useEffect(() => {
     setFilteredBooks(state.library)
@@ -104,6 +107,11 @@ export function Home() {
     setShowCategoryInput(showCategory)
   }
 
+  const handlePageClick = (data: any) => {
+    setSelectedPage(Math.abs(data.selected - 1));
+    setOffsetPagination(Math.ceil(selectedPage * LIMIT));
+  };
+
   return (
     <HomeStyled>
 
@@ -124,11 +132,21 @@ export function Home() {
       </TotalBooks>
 
       <HomeListBooksContainerStyled>
-          <ListBooks bookLibrary={filteredBooks.slice(pagination.offset, pagination.offset + pagination.limit)} />
+          <ListBooks bookLibrary={filteredBooks.slice(offsetPagination, offsetPagination + LIMIT)} />
       </HomeListBooksContainerStyled>
 
-      <Pagination libraryLength={state.library.length} setPagination={setPagination} pagination={pagination}/>
-
+      <ReactPaginate
+        previousLabel={'<'}
+        nextLabel={'>'}
+        breakLabel={'...'}
+        breakClassName={'break-me'}
+        pageCount={state.library.length / LIMIT}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageClick}
+        containerClassName={`pagination ${theme.title === 'dark' ? 'pagination-darkmode' : ''}`}
+        activeClassName={'active'}
+      />
     </HomeStyled>
   );
 }
