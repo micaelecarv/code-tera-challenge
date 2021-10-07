@@ -49,11 +49,9 @@ export function Book(props: BookItemProps) {
   }
   return (
     <>
-      {/* <div className="book"> */}
       <BookStyled>
           <li>
             <img alt={props.bookItem.name} src={props.bookItem.name === "Chobits" ? fallbackImage : props.bookItem.cover_picture} style={{height: '250px'}}/>
-            {/* <div className="book-li"> */}
             <BookLiStyled>
               <Link to={{pathname: '/detail', state: props.bookItem }}>
 
@@ -64,7 +62,6 @@ export function Book(props: BookItemProps) {
                 </BookLiTextStyled>  
               </Link>
 
-              {/* <div className="hearth-icon"> */}
                 <BookHearthIconStyled>
                   {liked ? (
                     <Liked onClick={clickLikeButton()}/>
@@ -73,12 +70,7 @@ export function Book(props: BookItemProps) {
                   )}
                 </BookHearthIconStyled>
             </BookLiStyled>
-              {/* </div> */}
-            {/* </div> */}
-
-            {/* <h3>{props.bookItem.users_who_liked.length}</h3> */}
           </li>
-      {/* </div> */}
       </BookStyled>
     </>
   );

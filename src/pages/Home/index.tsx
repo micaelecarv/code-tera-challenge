@@ -5,10 +5,9 @@ import { FilterBooks } from "../../components/FilterBooks";
 import {LIMIT, USER_NAME} from '../../constants';
 import ReactPaginate from 'react-paginate';
 
-import { TotalBooks } from "../../styles/totalBooks";
 import { SearchBooksStyled } from "../../components/SearchBooks/style";
 import { FilterBooksStyled } from "../../components/FilterBooks/style";
-import { HomeStyled, HomeContainerStyled, HomeListBooksContainerStyled } from "./style";
+import { HomeStyled, HomeContainerStyled, HomeListBooksContainerStyled, TotalBooks } from "./style";
 import LibraryContext from '../../context/libraryContext';
 import './style.css'
 import { useTheme } from "styled-components";

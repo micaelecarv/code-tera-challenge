@@ -18,8 +18,7 @@ type PropsLibraryContext = {
 
 const DEFAULT_VALUE = {
   state: {
-    library: [],
-    theme: {}
+    library: []
   },
   setState: () => {}
 }
